@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://rb0jpl3k1nem"]
+
+[ext_resource type="Script" uid="uid://cm8ddwtkg07pr" path="res://filtro.gd" id="1_ryk6b"]
+[ext_resource type="Texture2D" uid="uid://cit8sa83luvxg" path="res://MeshLibrary/texturajfif.png" id="2_b8cc4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_htemk"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_14cdr"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pj43j"]
+albedo_texture = ExtResource("2_b8cc4")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pj0hq"]
+top_radius = 0.6
+bottom_radius = 0.6
+height = 1.0
+
+[sub_resource type="ImageTexture" id="ImageTexture_xlv8l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryk6b"]
+roughness_texture = SubResource("ImageTexture_xlv8l")
+
+[node name="filtro" type="StaticBody3D" unique_id=1465070323]
+script = ExtResource("1_ryk6b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=994793358]
+shape = SubResource("BoxShape3D_htemk")
+
+[node name="Cuerpo" type="MeshInstance3D" parent="." unique_id=1767470646]
+mesh = SubResource("BoxMesh_14cdr")
+
+[node name="Agua" type="MeshInstance3D" parent="." unique_id=1982150685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0074100494, 0)
+material_override = SubResource("StandardMaterial3D_pj43j")
+mesh = SubResource("CylinderMesh_pj0hq")
+surface_material_override/0 = SubResource("StandardMaterial3D_ryk6b")
+
+[node name="Letrero" type="Label3D" parent="." unique_id=1135334729]
